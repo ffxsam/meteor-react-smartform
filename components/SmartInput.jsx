@@ -9,7 +9,6 @@ SmartInput = React.createClass({
 
   getDefaultProps() {
     return {
-      _smart: true,
       required: false
     }
   },
@@ -28,8 +27,13 @@ SmartInput = React.createClass({
     });
   },
 
-  handleBlur({target}) {
-
+  handleBlurOrFocus(event) {
+    Dispatcher.dispatch('SMARTFORM_INPUT_BLURORFOCUS', {
+      event: event.type,
+      formId: this.props.formId,
+      id: this.props.id,
+      valid: this.state.valid
+    });
   },
 
   handleChange({target}) {
@@ -51,8 +55,9 @@ SmartInput = React.createClass({
 
   render() {
     return <input
-      onBlur={this.handleBlur}
+      onBlur={this.handleBlurOrFocus}
       onChange={this.handleChange}
+      onFocus={this.handleBlurOrFocus}
       ref="input"
       {...this.props}
     />

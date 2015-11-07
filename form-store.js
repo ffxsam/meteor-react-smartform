@@ -18,6 +18,16 @@ const Actions = {
         value: action.value
       }
     });
+  },
+
+  'SMARTFORM_INPUT_BLURORFOCUS': function (action) {
+    const formError = `form.${action.formId}.${action.id}.error`;
+
+    if (action.valid || action.event === 'focus') {
+      FormState.set(formError, '');
+    } else {
+      FormState.set(formError, 'error goes here');
+    }
   }
 };
 
