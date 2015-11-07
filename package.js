@@ -16,8 +16,9 @@ Package.onUse(function (api) {
   api.addFiles([
     'lib/form-state.js',
     'form-store.js',
-    'SmartInput.jsx',
-    'SmartForm.jsx'
+    'components/SmartInput.jsx',
+    'components/SmartError.jsx',
+    'components/SmartForm.jsx'
   ], 'client');
-  api.export(['SmartInput', 'SmartForm'], 'client');
+  api.export(['SmartInput', 'SmartError', 'SmartForm'], 'client');
 });
