@@ -18,7 +18,8 @@ SmartForm = React.createClass({
   },
 
   handleSubmit(event) {
-    this.props.onSubmit();
+    event.preventDefault();
+    this.props.onSubmit(0);
   },
 
   render() {
