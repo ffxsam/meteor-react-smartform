@@ -21,12 +21,14 @@ const Actions = {
   },
 
   'SMARTFORM_INPUT_BLURORFOCUS': function (action) {
-    const formError = `form.${action.formId}.${action.id}.error`;
+    const formError = `form.${action.formId}.${action.id}.errorReason`;
 
     if (action.valid || action.event === 'focus') {
       FormState.set(formError, '');
     } else {
-      FormState.set(formError, 'error goes here');
+      console.log(action);
+
+      FormState.set(formError, action.errorReason);
     }
   }
 };
