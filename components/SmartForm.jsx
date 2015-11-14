@@ -20,8 +20,11 @@ SmartForm = React.createClass({
   handleSubmit(event) {
     event.preventDefault();
 
+    Dispatcher.dispatch('SMARTFORM_SUBMITTED', {
+      formData: this.data.formData,
+      submitFunction: this.props.onSubmit
+    });
     // TODO: prevent action from occurring if form is not valid
-    this.props.onSubmit(this.data.formData);
   },
 
   render() {

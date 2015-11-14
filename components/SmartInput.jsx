@@ -44,8 +44,7 @@ SmartInput = React.createClass({
       errorReason: this.state.errorReason,
       event: event.type,
       formId: this.props.formId,
-      id: this.props.id,
-      valid: this.state.valid
+      id: this.props.id
     });
   },
 
@@ -57,8 +56,6 @@ SmartInput = React.createClass({
     if (this.props.required && target.value === '') {
       // Required field is blank
       valid = false;
-      // TODO: fix this. if user tabs out of req field without typing,
-      // error reason is blank
       errorReason = ERROR_REQUIRED;
     } else if (this.props.validateAs && value !== '') {
       let regexMatch;
