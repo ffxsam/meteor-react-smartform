@@ -14,7 +14,7 @@ SmartError = React.createClass({
 
     if (errorReason === ERROR_REQUIRED) {
       errorMessage = this.props.requiredMsg;
-    } else if (errorReason === ERROR_INVALID) {
+    } else if (errorReason === ERROR_INVALID || errorReason === ERROR_SUSPECT) {
       errorMessage = this.props.invalidMsg;
     } else {
       errorMessage = '';

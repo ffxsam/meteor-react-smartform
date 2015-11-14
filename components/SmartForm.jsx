@@ -21,7 +21,7 @@ SmartForm = React.createClass({
     event.preventDefault();
 
     // TODO: prevent action from occurring if form is not valid
-    this.props.onSubmit(0);
+    this.props.onSubmit(this.data.formData);
   },
 
   render() {

@@ -1,5 +1,5 @@
 SmartInput = React.createClass({
-  displayName: SmartInput,
+  displayName: 'SmartInput',
 
   validations: {
     email: /^[A-Za-z0-9-._+]+@[A-Za-z0-9-]+[.A-Za-z0-9-]*\.[A-Za-z]{2,}$/,
@@ -11,8 +11,7 @@ SmartInput = React.createClass({
     formId: React.PropTypes.string.isRequired,
     id: React.PropTypes.string.isRequired,
     required: React.PropTypes.bool,
-    validate: React.PropTypes.bool,
-    validateAs: React.PropTypes.string,
+    validateAs: React.PropTypes.any,
     weakValidation: React.PropTypes.bool
   },
 
@@ -38,6 +37,7 @@ SmartInput = React.createClass({
   },
 
   handleBlurOrFocus(event) {
+    // Call this, just in case the field was never typed in
     this.handleChange(event);
 
     Dispatcher.dispatch('SMARTFORM_INPUT_BLURORFOCUS', {
@@ -60,18 +60,26 @@ SmartInput = React.createClass({
       // TODO: fix this. if user tabs out of req field without typing,
       // error reason is blank
       errorReason = ERROR_REQUIRED;
-    } else if (this.props.validate && value !== '' &&
-               !value.match(this.validations[this.props.validateAs])) {
+    } else if (this.props.validateAs && value !== '') {
+      let regexMatch;
 
-      /* Field doesn't pass regex validation. If it's weak validation, don't
-       be a hard error - set valid to true
-       */
-      if (this.props.weakValidation) {
-        valid = true;
-        errorReason = ERROR_SUSPECT;
+      if (typeof this.props.validateAs === 'string') {
+        regexMatch = value.match(this.validations[this.props.validateAs]);
       } else {
-        valid = false;
-        errorReason = ERROR_INVALID;
+        regexMatch = value.match(this.props.validateAs);
+      }
+
+      if (!regexMatch) {
+        /* Field doesn't pass regex validation. If it's weak validation, don't
+         be a hard error - set valid to true
+         */
+        if (this.props.weakValidation) {
+          valid = true;
+          errorReason = ERROR_SUSPECT;
+        } else {
+          valid = false;
+          errorReason = ERROR_INVALID;
+        }
       }
     }
 
