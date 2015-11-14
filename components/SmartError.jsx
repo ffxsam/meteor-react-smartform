@@ -12,9 +12,9 @@ SmartError = React.createClass({
     const errorReason = FormState.get(
       `form.${this.props.linkedTo}.errorReason`);
 
-    if (errorReason === 'REQUIRED') {
+    if (errorReason === ERROR_REQUIRED) {
       errorMessage = this.props.requiredMsg;
-    } else if (errorReason === 'INVALID') {
+    } else if (errorReason === ERROR_INVALID) {
       errorMessage = this.props.invalidMsg;
     } else {
       errorMessage = '';

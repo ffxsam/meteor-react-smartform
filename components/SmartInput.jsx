@@ -30,7 +30,7 @@ SmartInput = React.createClass({
   },
 
   componentDidMount() {
-    Dispatcher.dispatch(SMARTFORM_INPUT_MOUNTED, {
+    Dispatcher.dispatch('SMARTFORM_INPUT_MOUNTED', {
       formId: this.props.formId,
       id: this.props.id,
       valid: this.state.valid
@@ -38,7 +38,9 @@ SmartInput = React.createClass({
   },
 
   handleBlurOrFocus(event) {
-    Dispatcher.dispatch(SMARTFORM_INPUT_BLURORFOCUS, {
+    this.handleChange(event);
+
+    Dispatcher.dispatch('SMARTFORM_INPUT_BLURORFOCUS', {
       errorReason: this.state.errorReason,
       event: event.type,
       formId: this.props.formId,
@@ -75,7 +77,7 @@ SmartInput = React.createClass({
 
     this.setState({errorReason, valid});
 
-    Dispatcher.dispatch(SMARTFORM_INPUT_CHANGED, {
+    Dispatcher.dispatch('SMARTFORM_INPUT_CHANGED', {
       formId: this.props.formId,
       id: this.props.id,
       valid,
