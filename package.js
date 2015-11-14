@@ -14,8 +14,9 @@ Package.onUse(function (api) {
   api.use('meteorflux:dispatcher@1.2.0');
   api.use('meteorflux:reactive-state@1.1.1');
   api.addFiles([
+    'lib/symbols.js',
     'lib/form-state.js',
-    'form-store.js',
+    'lib/form-store.js',
     'components/SmartInput.jsx',
     'components/SmartError.jsx',
     'components/SmartForm.jsx'

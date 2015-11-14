@@ -1,5 +1,5 @@
 SmartInput = React.createClass({
-  displayName: 'SmartInput',
+  displayName: SmartInput,
 
   validations: {
     email: /^[A-Za-z0-9-._+]+@[A-Za-z0-9-]+[.A-Za-z0-9-]*\.[A-Za-z]{2,}$/,
@@ -30,7 +30,7 @@ SmartInput = React.createClass({
   },
 
   componentDidMount() {
-    Dispatcher.dispatch('SMARTFORM_INPUT_MOUNTED', {
+    Dispatcher.dispatch(SMARTFORM_INPUT_MOUNTED, {
       formId: this.props.formId,
       id: this.props.id,
       valid: this.state.valid
@@ -38,7 +38,7 @@ SmartInput = React.createClass({
   },
 
   handleBlurOrFocus(event) {
-    Dispatcher.dispatch('SMARTFORM_INPUT_BLURORFOCUS', {
+    Dispatcher.dispatch(SMARTFORM_INPUT_BLURORFOCUS, {
       errorReason: this.state.errorReason,
       event: event.type,
       formId: this.props.formId,
@@ -57,7 +57,7 @@ SmartInput = React.createClass({
       valid = false;
       // TODO: fix this. if user tabs out of req field without typing,
       // error reason is blank
-      errorReason = 'REQUIRED';
+      errorReason = ERROR_REQUIRED;
     } else if (this.props.validate && value !== '' &&
                !value.match(this.validations[this.props.validateAs])) {
 
@@ -66,16 +66,16 @@ SmartInput = React.createClass({
        */
       if (this.props.weakValidation) {
         valid = true;
-        errorReason = 'SUSPECT';
+        errorReason = ERROR_SUSPECT;
       } else {
         valid = false;
-        errorReason = 'INVALID';
+        errorReason = ERROR_INVALID;
       }
     }
 
     this.setState({errorReason, valid});
 
-    Dispatcher.dispatch('SMARTFORM_INPUT_CHANGED', {
+    Dispatcher.dispatch(SMARTFORM_INPUT_CHANGED, {
       formId: this.props.formId,
       id: this.props.id,
       valid,
