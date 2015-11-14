@@ -1,4 +1,4 @@
-SmartForm = React.createClass({
+SmartForm.Form = React.createClass({
   displayName: 'SmartForm',
   mixins: [ReactMeteorData],
 
@@ -20,11 +20,12 @@ SmartForm = React.createClass({
   handleSubmit(event) {
     event.preventDefault();
 
+    console.info(this.data.formData);
+
     Dispatcher.dispatch('SMARTFORM_SUBMITTED', {
       formData: this.data.formData,
       submitFunction: this.props.onSubmit
     });
-    // TODO: prevent action from occurring if form is not valid
   },
 
   render() {

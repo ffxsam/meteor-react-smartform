@@ -1,4 +1,4 @@
-SmartInput = React.createClass({
+SmartForm.Input = React.createClass({
   displayName: 'SmartInput',
 
   validations: {
@@ -23,7 +23,8 @@ SmartInput = React.createClass({
 
   getInitialState() {
     return {
-      errorReason: '',
+      errorReason: this.props.required ? SmartForm.ERROR_REQUIRED :
+                   SmartForm.ERROR_NONE,
       valid: !this.props.required && true
     }
   },
@@ -49,43 +50,10 @@ SmartInput = React.createClass({
   },
 
   handleChange({target}) {
-    let valid = true, errorReason;
-    const value = this.refs.input.value;
-
-    // Is the form input valid?
-    if (this.props.required && target.value === '') {
-      // Required field is blank
-      valid = false;
-      errorReason = ERROR_REQUIRED;
-    } else if (this.props.validateAs && value !== '') {
-      let regexMatch;
-
-      if (typeof this.props.validateAs === 'string') {
-        regexMatch = value.match(this.validations[this.props.validateAs]);
-      } else {
-        regexMatch = value.match(this.props.validateAs);
-      }
-
-      if (!regexMatch) {
-        /* Field doesn't pass regex validation. If it's weak validation, don't
-         be a hard error - set valid to true
-         */
-        if (this.props.weakValidation) {
-          valid = true;
-          errorReason = ERROR_SUSPECT;
-        } else {
-          valid = false;
-          errorReason = ERROR_INVALID;
-        }
-      }
-    }
-
-    this.setState({errorReason, valid});
-
     Dispatcher.dispatch('SMARTFORM_INPUT_CHANGED', {
-      formId: this.props.formId,
-      id: this.props.id,
-      valid,
+      callback: this.setState.bind(this),
+      props: this.props,
+      validations: this.validations,
       value: target.value
     });
   },
