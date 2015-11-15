@@ -9,8 +9,8 @@ Package.describe({
 Package.onUse(function (api) {
   api.versionsFrom('1.2.1');
   api.use('ecmascript');
-  api.use('react');
-  api.use('react-meteor-data');
+  api.use('react@0.14.1_1');
+  api.use('react-meteor-data@0.2.3');
   api.use('meteorflux:dispatcher@1.2.0');
   api.use('meteorflux:reactive-state@1.1.1');
   api.addFiles([
