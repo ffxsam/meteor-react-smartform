@@ -1,6 +1,6 @@
 Package.describe({
   name: 'ffxsam:react-smartform',
-  version: '0.7.0',
+  version: '0.7.2',
   summary: 'Smart form elements for React',
   git: 'https://github.com/ffxsam/meteor-react-smartform',
   documentation: 'README.md'
