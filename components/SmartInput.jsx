@@ -3,7 +3,7 @@ SmartForm.Input = React.createClass({
 
   validations: {
     email: /^[A-Za-z0-9-._+]+@[A-Za-z0-9-]+[.A-Za-z0-9-]*\.[A-Za-z]{2,}$/,
-    phone: /^\D*1?\D*(\d{3})\D*(\d{3})\D*(\d{4})\D*x?(\d*)$/,
+    phone: /^\(?\d{3}[)-]?\s*\d{3}(-|\s*)\d{4}$/,
     zip: /^\d{5}$/
   },
 
