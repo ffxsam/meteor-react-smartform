@@ -63,7 +63,6 @@ SmartForm.Input = React.createClass({
       onBlur={this.handleBlurOrFocus}
       onChange={this.handleChange}
       onFocus={this.handleBlurOrFocus}
-      ref="input"
       {...this.props}
     />
   }

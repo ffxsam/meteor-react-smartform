@@ -19,8 +19,7 @@ SmartForm.Form = React.createClass({
 
   handleSubmit(event) {
     event.preventDefault();
-
-    console.info(this.data.formData);
+    document.activeElement.blur();
 
     Dispatcher.dispatch('SMARTFORM_SUBMITTED', {
       formData: this.data.formData,
