@@ -30,7 +30,7 @@ SmartForm.Input = React.createClass({
   },
 
   componentDidMount() {
-    Dispatcher.dispatch('SMARTFORM_INPUT_MOUNTED', {
+    FormDispatcher.dispatch('SMARTFORM_INPUT_MOUNTED', {
       formId: this.props.formId,
       id: this.props.id,
       valid: this.state.valid
@@ -41,7 +41,7 @@ SmartForm.Input = React.createClass({
     // Call this, just in case the field was never typed in
     this.handleChange(event);
 
-    Dispatcher.dispatch('SMARTFORM_INPUT_BLURORFOCUS', {
+    FormDispatcher.dispatch('SMARTFORM_INPUT_BLURORFOCUS', {
       errorReason: this.state.errorReason,
       event: event.type,
       formId: this.props.formId,
@@ -50,7 +50,7 @@ SmartForm.Input = React.createClass({
   },
 
   handleChange({target}) {
-    Dispatcher.dispatch('SMARTFORM_INPUT_CHANGED', {
+    FormDispatcher.dispatch('SMARTFORM_INPUT_CHANGED', {
       callback: this.setState.bind(this),
       props: this.props,
       validations: this.validations,

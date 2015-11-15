@@ -14,14 +14,14 @@ SmartForm.Form = React.createClass({
   },
 
   componentDidMount() {
-    Dispatcher.dispatch('SMARTFORM_FORM_MOUNTED', {id: this.props.id});
+    FormDispatcher.dispatch('SMARTFORM_FORM_MOUNTED', {id: this.props.id});
   },
 
   handleSubmit(event) {
     event.preventDefault();
     document.activeElement.blur();
 
-    Dispatcher.dispatch('SMARTFORM_SUBMITTED', {
+    FormDispatcher.dispatch('SMARTFORM_SUBMITTED', {
       formData: this.data.formData,
       submitFunction: this.props.onSubmit
     });
