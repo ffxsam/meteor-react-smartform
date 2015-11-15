@@ -22,5 +22,4 @@ Package.onUse(function (api) {
     'components/SmartForm.jsx'
   ], 'client');
   api.export('SmartForm', 'client');
-  api.export('FormState', 'client'); //TODO: remove before release
 });
