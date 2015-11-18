@@ -1,5 +1,4 @@
 SmartForm.Error = React.createClass({
-  displayName: 'SmartError',
   mixins: [ReactMeteorData],
 
   propTypes: {
