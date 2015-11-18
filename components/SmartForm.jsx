@@ -1,5 +1,4 @@
 SmartForm.Form = React.createClass({
-  displayName: 'SmartForm',
   mixins: [ReactMeteorData],
 
   propTypes: {
