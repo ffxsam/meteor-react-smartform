@@ -61,11 +61,13 @@ The `SmartForm.Input` component will take care of any validation and, in case of
 	* `"phone"` (US 10-digit phone number)
 	* `"zip"` (US 5-digit ZIP)
 * `weakValidation`: {Boolean} If this property is present, the field will only perform a weak validation. In other words, if the value in the field does not pass validation against the `validateAs` field, the `SmartForm.Error` component will still show its `invalidMsg` message, but the field will remain in a valid state, and `SmartForm.ERROR_SUSPECT` will be set as the field error instead of `SmartForm.ERROR_INVALID`. Weak validation is recommended for fields such as email address, where standards might change in the future (e.g. we didn't used to have domain suffixes greater than three characters!).
+* `defaultvalue`: {String} A default value for the input field.
 
 ### SmartForm.Error
 
 #### Properties
 * `invalidMsg`: {String} The message to display when the field is invalid or suspect
+* `requiredMsg`: {String} The message to display when the field is required but empty
 * `linkedTo`: {String} **[required]** The form element the error should be linked to, in the format of `"form-id.element-id"`
 * `onError`: {Function} A callback which is invoked in case of error, and is passed two arguments:
 	* `errorReason`: {Symbol} The reason for the error. Either `SmartForm.ERROR_INVALID`, `SmartForm.ERROR_SUSPECT`, or `SmartForm.ERROR_REQUIRED`

@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.7.5
+* Fixed a bug so defaultValue works as expected (now a controlled component)
+
 ## 0.7.4
 * Removed `displayName` properties (Facebook's React extension for Chrome now displays proper component names)
 

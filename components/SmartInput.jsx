@@ -6,6 +6,7 @@ SmartForm.Input = React.createClass({
   },
 
   propTypes: {
+    defaultValue: React.PropTypes.string,
     formId: React.PropTypes.string.isRequired,
     id: React.PropTypes.string.isRequired,
     required: React.PropTypes.bool,
@@ -23,7 +24,8 @@ SmartForm.Input = React.createClass({
     return {
       errorReason: this.props.required ? SmartForm.ERROR_REQUIRED :
                    SmartForm.ERROR_NONE,
-      valid: !this.props.required && true
+      valid: !this.props.required && true,
+      value: this.props.defaultValue || ''
     }
   },
 
@@ -31,7 +33,8 @@ SmartForm.Input = React.createClass({
     FormDispatcher.dispatch('SMARTFORM_INPUT_MOUNTED', {
       formId: this.props.formId,
       id: this.props.id,
-      valid: this.state.valid
+      valid: this.state.valid,
+      value: this.state.value
     });
   },
 
@@ -48,6 +51,8 @@ SmartForm.Input = React.createClass({
   },
 
   handleChange({target}) {
+    this.setState({value: target.value});
+
     FormDispatcher.dispatch('SMARTFORM_INPUT_CHANGED', {
       callback: this.setState.bind(this),
       props: this.props,
@@ -61,6 +66,7 @@ SmartForm.Input = React.createClass({
       onBlur={this.handleBlurOrFocus}
       onChange={this.handleChange}
       onFocus={this.handleBlurOrFocus}
+      value={this.state.value}
       {...this.props}
     />
   }
