@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.8.0
+* Added `SmartForm.Checkbox` to the list of supported form elements
+
 ## 0.7.5
 * Fixed a bug so defaultValue works as expected (now a controlled component)
 
