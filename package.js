@@ -1,6 +1,6 @@
 Package.describe({
   name: 'ffxsam:react-smartform',
-  version: '0.7.5',
+  version: '0.8.0',
   summary: 'Smart form elements for React',
   git: 'https://github.com/ffxsam/meteor-react-smartform',
   documentation: 'README.md'
@@ -18,6 +18,7 @@ Package.onUse(function (api) {
     'lib/form-state.js',
     'lib/form-store.js',
     'components/SmartInput.jsx',
+    'components/SmartCheckbox.jsx',
     'components/SmartError.jsx',
     'components/SmartForm.jsx'
   ], 'client');
