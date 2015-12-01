@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.9.1
+* All IDs are now converted to camelCase so it's not necessary to deal with things like `formData['some-thing'].value`
+
 ## 0.9.0
 * Added `SmartForm.Select` to the list of supported form elements
 
