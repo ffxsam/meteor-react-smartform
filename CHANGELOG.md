@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.9.0
+* Added `SmartForm.Select` to the list of supported form elements
+
 ## 0.8.0
 * Added `SmartForm.Checkbox` to the list of supported form elements
 
