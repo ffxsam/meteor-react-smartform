@@ -7,13 +7,21 @@ SmartForm.Form = React.createClass({
   },
 
   getMeteorData() {
+    let camelCaseId = '';
+
+    if (this.props.id) {
+      camelCaseId = CaseConv.convert(this.props.id, 'aB');
+    }
+
     return {
-      formData: FormState.get(`form.${this.props.id}`)
+      formData: FormState.get(`form.${camelCaseId}`)
     }
   },
 
   componentDidMount() {
-    FormDispatcher.dispatch('SMARTFORM_FORM_MOUNTED', {id: this.props.id});
+    FormDispatcher.dispatch('SMARTFORM_FORM_MOUNTED', {
+      id: CaseConv.convert(this.props.id, 'aB')
+    });
   },
 
   handleSubmit(event) {
