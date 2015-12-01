@@ -70,6 +70,13 @@ The `SmartForm.Input` component will take care of any validation and, in case of
 * `id`: {String} **[required]** The id of the input element
 * `defaultChecked`: {Boolean} Indicates whether the checkbox should be checked by default
 
+### SmartForm.Select
+
+#### Properties
+* `formId`: {String} **[required]** The id of the form this input should be linked to
+* `id`: {String} **[required]** The id of the input element
+* `required`: {Boolean} Indicates whether this field is required
+
 ### SmartForm.Error
 
 #### Properties
