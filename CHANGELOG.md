@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.9.2
+* Fixed a major bug where select IDs were not stored in the right place
+
 ## 0.9.1
 * All IDs are now converted to camelCase so it's not necessary to deal with things like `formData['some-thing'].value`
 
